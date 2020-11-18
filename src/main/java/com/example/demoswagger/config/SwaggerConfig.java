@@ -20,16 +20,17 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         //Register the controllers to swagger
         //Also it is configuring the Swagger Docket
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.any())
+//                .apis(RequestHandlerSelectors.any())
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
-                .paths(PathSelectors.any())
-                .paths(PathSelectors.ant("/swagger2-demo"))
+//                .paths(PathSelectors.any())
+//                .paths(PathSelectors.ant("/swagger2-demo"))
                 .build();
     }
 
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //enabling swagger-ui part for visual documentation
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META_INF/resources/webjars/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

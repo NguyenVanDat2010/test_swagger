@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Api(value = "StudentController", description = "REST Apis related to Student Entity!!!!")
 @RestController
+//@RequestMapping("/swagger2-demo")
 public class StudentController {
     List<Student> students = new ArrayList<Student>();
     {
