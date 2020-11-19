@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Api(value = "StudentController", description = "REST Apis related to Student Entity!!!!")
+//@Api(value = "StudentController", description = "REST Apis related to Student Entity!!!!")
 @RestController
 //@RequestMapping("/swagger2-demo")
 public class StudentController {
@@ -25,24 +25,24 @@ public class StudentController {
         students.add(new Student(4L,"Sukesh", "VI", "USA"));
     }
 
-    @ApiOperation(value = "Get list of the system", response = Iterable.class, tags = "getStudents")
-    @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Success|OK"),
-            @ApiResponse(code = 401, message = "Not authorized!"),
-            @ApiResponse(code = 403, message = "Forbidden!!!"),
-            @ApiResponse(code = 404, message = "Not found!!!")})
+//    @ApiOperation(value = "Get list of the system", response = Iterable.class, tags = "getStudents")
+//    @ApiResponses(value ={
+//            @ApiResponse(code = 200, message = "Success|OK"),
+//            @ApiResponse(code = 401, message = "Not authorized!"),
+//            @ApiResponse(code = 403, message = "Forbidden!!!"),
+//            @ApiResponse(code = 404, message = "Not found!!!")})
     @RequestMapping(value = "/getStudents")
     public List<Student> getStudents() {
         return students;
     }
 
-    @ApiOperation(value="Get specific Student in the System", response = Student.class, tags = "getStudent")
+//    @ApiOperation(value="Get specific Student By name in the System", response = Student.class, tags = "getStudent")
     @RequestMapping(value = "/getStudent/{name}")
     public Student getStudent(@PathVariable(value = "name") String name) {
         return students.stream().filter(x -> x.getName().equalsIgnoreCase(name)).collect(Collectors.toList()).get(0);
     }
 
-    @ApiOperation(value = "Get specific Student By Country in the System ", response = Student.class, tags = "getStudentByCountry")
+//    @ApiOperation(value = "Get specific Student By Country in the System ", response = Student.class, tags = "getStudentByCountry")
     @RequestMapping(value = "/getStudentByCountry/{country}")
     public List<Student> getStudentByCountry(@PathVariable(value = "country") String country) {
         System.out.println("Searching Student in country : " + country);
@@ -52,7 +52,7 @@ public class StudentController {
         return studentsByCountry;
     }
 
-     @ApiOperation(value = "Get specific Student By Class in the System ",response = Student.class,tags="getStudentByClass")
+//     @ApiOperation(value = "Get specific Student By Class in the System ",response = Student.class,tags="getStudentByClass")
     @RequestMapping(value = "/getStudentByClass/{cls}")
     public List<Student> getStudentByClass(@PathVariable(value = "cls") String cls) {
         return students.stream().filter(x -> x.getCls().equalsIgnoreCase(cls)).collect(Collectors.toList());
